@@ -4,7 +4,7 @@ defmodule Day3 do
   def countTrees({line, index}) do
     IO.puts "index: #{index} line: #{line}"
 
-    if String.at(line, rem(index * 3, 31)) == "#" do
+    if String.at(line, rem(index * 3, String.length(line))) == "#" do
       true
     else
       false
