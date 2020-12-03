@@ -17,4 +17,7 @@ defmodule AdventOfCode.Day2 do
 end
 
 {:ok, contents} = File.read("input.txt")
-contents |> String.split("\n", trim: true) |> Enum.map(&AdventOfCode.Day2.checkPasswordInvalid/1) |> Enum.sum() |> IO.inspect
+contents
+|> String.split("\n", trim: true)
+|> Enum.map(&AdventOfCode.Day2.checkPasswordInvalid/1)
+|> Enum.sum() |> IO.inspect
