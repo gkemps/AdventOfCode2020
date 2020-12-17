@@ -11,28 +11,21 @@ defmodule Day13 do
       end)
       |> elem(0)
       |> Enum.reverse
-      |> findTimestamp(1)
+      |> Enum.reduce({0, 1}, &loop/2)
+      |> elem(0)
   end
 
-  defp findTimestamp([{num, pos} | tail], factor) do
-    if loop(tail, factor * num) do
-        factor * num
-      else
-        findTimestamp([{num, pos} | tail], factor + 1)
-    end
-  end
-
-  defp loop([{num, pos} | tail], t) do
-    IO.inspect {num, pos, t, rem(t + pos, num)}
+  defp loop({num, pos}, {t, step}) do
+    IO.inspect {num, pos, t, step}
     if rem(t + pos, num) == 0 do
-      loop(tail, t)
+      {t, lcm(step, num)}
     else
-      false
+      loop({num, pos}, {t + step, step})
     end
   end
 
-  defp loop([], t) do
-    true
+  defp lcm(a, b) do
+    div(a * b, Integer.gcd(a, b))
   end
 
   def run() do
