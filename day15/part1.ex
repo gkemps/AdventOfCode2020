@@ -1,7 +1,7 @@
 defmodule Day15 do
   @moduledoc false
 
-  def elveGame({_history, 2020, lastNumber}) do
+  def elveGame({_history, 30000000, lastNumber}) do
     IO.puts "Number spoken: #{lastNumber}"
   end
 
